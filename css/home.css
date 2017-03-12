@@ -1,0 +1,16 @@
+#branding {
+    width: 75%;
+    max-width: 500px;
+    height: 220px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: Helvetica, arial, sans-serif;
+    color: #333333;
+}
+
+#logo {
+    width: 100%;
+    display: block;
+    clear: both;
+    margin: 50px auto 15px;
+}

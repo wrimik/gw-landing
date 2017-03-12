@@ -1,49 +1,113 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Gray Wolf Financial</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
-    <style>
-        #branding{
-            width:75%;
-            max-width:500px;
-            margin:10% auto;
-            text-align:center;
-            font-family:Helvetica, arial, sans-serif;
-            color: #333333;
-        }
-        #logo{
-            width:100%;
-            margin-bottom:40px;
-            display:block;
-            clear:both;
-        }
-    </style>
-    <!-- 949.287.9171 -->
-    <!-- 1024 Bayside Dr Suite #516; Newport Beach, CA 92660 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+    <script src="/js/home.js"></script>
+    <link rel="stylesheet" href="/css/home.css">
+
 </head>
-<body>
+<body ng-app="app" class="fadeIn animated">
 
-<div id="branding" class="fadeInUp animated">
+<div id="branding">
     <img src="logo.png" id="logo" alt="">
-    <br>
-    949.287.9171
-    <br><br>
-    <br><br>
-    <hr style="opacity:.4;">
-
 </div>
-<div class="fadeInUp animated" style="text-align: center;">
+
+
+<div ng-controller="HomeController" class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-xs-center">
+                <div class="card-header">
+                    Contact
+                </div>
+                <div class="card-block">
+                    <p class="card-title">
+                        Call us at: 949.287.9171
+                    </p>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3322.7658992568167!2d-117.89429625174226!3d33.6113780481914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dce0704f2c4341%3A0x47b929eecabae7ba!2s1024+Bayside+Dr%2C+Newport+Beach%2C+CA+92660!5e0!3m2!1sen!2sus!4v1489347050985"
+                            width="100%" height="225" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div ng-class="{'animated shake': ui.error.show}"
+                 class="card text-xs-center">
+                <div class="card-header">
+                    Sign In
+                </div>
+                <div class="card-block">
+                    <form class="form-signin">
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <div class="form-group">
+                            <label for="">Email</label>
+                            <input ng-model="data.email" type="email" class="form-control" placeholder="Email address" required autofocus>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password</label>
+                            <input ng-model="data.password" type="password" id="inputPassword" class="form-control" placeholder="Password"
+                                   required>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                            <input ng-model="data.remember_me" type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                    </form>
+
+                    <div ng-show="ui.error.show" class="alert alert-danger" role="alert">
+                        <strong>Oops!</strong>
+                        {{ ui.error.message }}
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <button ng-click="signIn()" class="btn btn-primary float-right" type="submit">Sign in</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="text-align: center;">
+    <hr style="margin:50px">
     <img src="dilbert.jpg">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-92969726-2', 'auto');
     ga('send', 'pageview');
